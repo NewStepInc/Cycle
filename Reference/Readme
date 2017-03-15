@@ -1,0 +1,79 @@
+
+
+	------- Project: Android cycle view ----------
+	contact: Alfred Wallner, dev@vipos.com
+
+	Summary:
+	Activity with canvas in center and several labels on top and bottom, as shown in video.
+	Minimum compatible with API 11, if possible with API 10 (2.3)
+	The Activity is part of an app, and will be launched with several launch parameters.
+
+	Deliverables:
+		Java source code and resources files (xml ...)
+
+
+	Specs:
+	1) 
+		- use attached xml resources as starting point (in order to have same look as other app components)
+	 	- must adapt to all screen sizes and densities
+	   	- only Android SDK, no dependencies on external libraries (submit request if needed)
+
+	2) the activity needs to accept these launch paramaters:
+
+	LAUNCH_PARAM_CYCLE_DURATION = "cycle_duration"	// the total number of days in cycle
+	LAUNCH_PARAM_CYCLE_DAY = "cycle_day"	// the current day in cycle (always today), arrow points to that day
+	LAUNCH_PARAM_PERIOD_LENGTH = "period_length"	// number of days from day 1 to period_length displayed in red color 
+	LAUNCH_PARAM_OVULATION = "ovulation"	// ovulation day displayed in green color, the 3 days preceding ovulation day displaying in light green color 
+	LAUNCH_PARAM_LANG = "lang"		// language 
+	LAUNCH_PARAM_THEME_ID = "theme_id"	// theme
+
+	Activity onCreate -> call getParams()
+	protected void getParams() {
+            Bundle extras = getIntent().getExtras();
+            if(extras != null)  {
+                String lang = extras.getString(LAUNCH_PARAM_LANG);
+				....
+			}
+	}
+
+
+	3) normal case: (video 1)
+		a) at the top of the screen, there will be 1 animated label
+		b) at the bottom of the screen, there will be 3 animated labels
+		c) cycle wheel: components: INNER_CIRCLE, OUTER_CIRCLE, ARROW
+			- is slightly open, arrow makes 1 full rotation (starting at top) and 1 partial rotation
+			- label in INNER_CIRCLE displays the cycle day (LAUNCH_PARAM_CYCLE_DAY)
+			- tapping on numbers in OUTER_CIRCLE displays localized date in INNER_CIRCLE (for 3 seconds, then back to showing cycle day)
+			- tapping on numbers in OUTER_CIRCLE highlights the tapping area with a circle for 3 seconds (or less if continue tapping other labels)
+			- display logic:
+				OUTER_CIRCLE total sections (labels) = LAUNCH_PARAM_CYCLE_DURATION (eg. 1 to 28)
+				OUTER_CIRLE colors (see hex colors below):
+					c1: red = 1 .. LAUNCH_PARAM_PERIOD_LENGTH ( eg 1 .. 5 )
+					c2: dark green = LAUNCH_PARAM_OVULATION ( eg 12 )
+					c3: light green = LAUNCH_PARAM_OVULATION - 3 .. LAUNCH_PARAM_OVULATION - 1  (eg 9 .. 11)
+					c4: light gray = all remaining sections of OUTER_CIRCLE
+				ARROW end point = LAUNCH_PARAM_CYCLE_DAY
+				The color of the ARROW + INNER_CIRCLE matches the color of the OUTER_CIRCLE at the ARROW endpoint.
+			- show 3 bottom boxes: 
+				first: big bottom box animates up
+				second: 2 half size boxes animate in from left and right
+			- hex colors  
+				c1: HEX_COLORS_PERIOD "ea1d4c,f38a77,ff9467,f67173,e97a95,ac85c6,c0514c,f85464"	// red 
+				c2: HEX_COLORS_OVU "63a11e,6f7a24,34a874,24a969,388798,0b9098,5f7426,7f9949"	// dark green
+				c3: HEX_COLORS_FERTILE "8fd437,989d48,89c05a,99bf65,40b8ae,58b9b2,83941b,9bd52"	// light green
+				c4: HEX_COLOR_BASE "c5c5c5"	// light gray
+				c5: TEXT_COLOR "404040" // dark gray 
+				c6: COLOR_PERIOD_LATE = TEXT_COLOR
+				depending on LAUNCH_PARAM_THEME_ID (values 0 - 7), select the appropriate colors from arrays above
+				(NOTE: during testing, just grab the first color in PERIOD,OVU and FERTILE (always THEME_ID 0) 
+
+
+	4) special case: CYCLE_DAY > CYCLE_DURATION (video 2)
+		- the cycle wheel needs to have CYCLE_DAY days
+		- the cycle day will be the last day in the wheel and the arrow needs to point to it
+		- the days between CYCLE_DURATION and CYCLE_DAY must be display in dark gray (COLOR_PERIOD_LATE)
+		- at the bottom of the screen, there will be only 1 label, and it says "PERIOD LATE x DAYS" , where x = CYCLE_DAY - CYCLE_DURATION
+
+	   	
+
+

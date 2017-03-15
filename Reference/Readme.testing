@@ -1,0 +1,42 @@
+
+TESTING:
+Test cases with different Activity launch parameters
+Please create a launch screen with a button for each test case below, and send me the apk. 
+
+1) 
+	LAUNCH_PARAM_CYCLE_DURATION = 24  (wheel is 1 to 24)
+	LAUNCH_PARAM_CYCLE_DAY = 7		(arrow goes to 7)
+	LAUNCH_PARAM_PERIOD_LENGTH = 5	( days 1 .. 5 in red )
+	LAUNCH_PARAM_OVULATION = 12  ( day 12 dark green, days 9 .. 11 light green ) 
+	shows 3 bottom boxes
+
+2) 
+	LAUNCH_PARAM_CYCLE_DURATION = 33  (wheel is 1 to 33)
+	LAUNCH_PARAM_CYCLE_DAY = 22 		(arrow goes to 22)
+	LAUNCH_PARAM_PERIOD_LENGTH = 4	( days 1 .. 4 in red )
+	LAUNCH_PARAM_OVULATION = 22  ( day 22 dark green, days 19 .. 21 light green ) 
+	shows 3 bottom boxes
+
+3) 
+	LAUNCH_PARAM_CYCLE_DURATION = 53  (wheel is 1 to 50)
+	LAUNCH_PARAM_CYCLE_DAY = 32 	(arrow goes to 32)
+	LAUNCH_PARAM_PERIOD_LENGTH = 6	( days 1 .. 6 in red )
+	LAUNCH_PARAM_OVULATION = 35  ( day 35 dark green, days 32 .. 34 light green ) 
+	shows 3 bottom boxes
+
+4) 
+	LAUNCH_PARAM_CYCLE_DURATION = 41  (wheel is 1 to 41)
+	LAUNCH_PARAM_CYCLE_DAY = 2 	(arrow goes to 2)
+	LAUNCH_PARAM_PERIOD_LENGTH = 6	( days 1 .. 6 in red )
+	LAUNCH_PARAM_OVULATION = 26  ( day 26 dark green, days 23 .. 25 light green ) 
+	shows 3 bottom boxes
+
+5) special case CYCLE_DAY > CYCLE_DURATION
+	LAUNCH_PARAM_CYCLE_DURATION = 42  (wheel is 1 to 47)
+	LAUNCH_PARAM_CYCLE_DAY = 47		(arrow goes to 47)
+	LAUNCH_PARAM_PERIOD_LENGTH = 6	( days 1 .. 6 in red )
+	LAUNCH_PARAM_OVULATION = 30  ( not showing green, instead days 43 .. 47 are dark gray COLOR_LATE_PERIOD) 
+	shows 1 bottom box
+
+
+Additional test cases may be added (if there are failures with the above).

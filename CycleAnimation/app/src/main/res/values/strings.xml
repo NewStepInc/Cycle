@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">CanvAnim</string>
+
+
+    <string name="duration">duration</string>
+    <string name="day">day</string>
+    <string name="period_length">period_length</string>
+    <string name="ovulation">ovulation</string>
+    <string name="lang">lang</string>
+    <string name="theme_id">theme_id</string>
+
+</resources>

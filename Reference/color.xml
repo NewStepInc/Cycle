@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- <color name="menubar">#38a3b3</color> 
+    #define MENU_COLORS @"ea1d4c,f15e43,38a3b3,f77273,bf44d2,2e83da,98291b,588428"
+    -->
+    <color name="menubar0">#ea1d4c</color>
+	<color name="color_transparent">#00000000</color>
+</resources>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" 
+	android:background="@color/white"
+    android:orientation="vertical" >
+   
+	<RelativeLayout
+        android:id="@+id/buttonbar"
+        android:layout_width="match_parent"        
+        android:background="@color/menubar0"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/cycletitle"
+            android:text="@string/cycle"
+            style="@style/cycleheader" 
+            android:contentDescription="">
+        </TextView>
+        <ImageButton
+            android:id="@+id/buttondone"
+            android:src="@drawable/backwhite" 
+            style="@style/closeButton"
+            android:onClick="tapBack"
+        	android:layout_width="50sp"        
+        	android:layout_height="50sp"
+        	android:layout_marginLeft="-5sp"
+            android:layout_alignParentLeft="true" />
+    </RelativeLayout>
+
+	<!--
+		< top label (100% width) >
+		< canvas >
+		< left label (50% width, animate from left) > < right label (50% width, animate from right) >
+		< bottom label (100% width, animate up) >
+	-->
+
+</LinearLayout>
